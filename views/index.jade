@@ -1,6 +1,6 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  div(ui-view)
+  art-app(ng-controller='ToolbarController')
+    .content
+      div(ui-view)

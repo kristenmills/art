@@ -22,3 +22,6 @@ function config($stateProvider, $locationProvider, $urlRouterProvider){
       templateUrl: '/templates/home/index'
     });
 }
+
+
+require('./home');

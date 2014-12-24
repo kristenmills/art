@@ -1,0 +1,20 @@
+<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+
+<polymer-element name="art-app">
+  <template>
+    <link rel="stylesheet"  href="art-app.css" shim-shadowdom>
+    <core-header-panel mode="waterfall">
+      <core-toolbar>
+        <span flex><a href="#" on-click="{{ goTo }}" state="art.index"><h2>Art</h2></a></span>
+        <span>Upload Art</span>
+        <span>Login</span>
+      </core-toolbar>
+      <div class="content">
+        <content></content>
+      </div>
+    </core-header-panel>
+  </template>
+
+  <script src='art-app.js'></script>
+</polymer-element>
