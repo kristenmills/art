@@ -1,0 +1,21 @@
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../login-dialog/login-dialog.html">
+
+<polymer-element name="art-toolbar" attributes="loggedIn">
+  <template>
+    <link rel="stylesheet"  href="art-toolbar.css" shim-shadowdom>
+    <link rel="stylesheet"  href="../../stylesheets/application.css" shim-shadowdom>
+    <core-toolbar>
+      <span flex><h2><a on-click="{{ go }}" href="/">Art</a></h2></span>
+      <span>Upload Art</span>
+      <template if="{{ !loggedIn }}">
+        <span><a href="#" on-click="{{ toggleLogin }}">Login</a></span>
+      </template>
+      <template if="{{ loggedIn }}">
+        <span><a href="#" on-click="{{ logout }}">Logout</a></span>
+      </template>
+      <login-dialog id="login" on-submit="{{ handleSubmit }}"></login-dialog>
+    </core-toolbar>
+  </template>
+  <script src="art-toolbar.js"></script>
+</polymer-element>

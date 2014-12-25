@@ -1,6 +1,17 @@
 Polymer({
-  go: function(e) {
-    e.preventDefault();
-    this.$.router.go(e.currentTarget.attributes.href.value);
+  handleLogin: function(event) {
+    this.$.auth.username = event.detail.username;
+    this.$.auth.password = event.detail.password;
+    this.$.auth.login();
+  },
+  handleLogout: function(event) {
+    this.$.auth.logout();
+  },
+  handleRoute: function(event) {
+    this.$.router.go(event.detail.href);
+  },
+  showToast: function(event) {
+    this.toastMessage = event.detail.toastMessage;
+    this.$.toast.show();
   }
 });
