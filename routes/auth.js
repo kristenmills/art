@@ -9,6 +9,7 @@ router.post('/auth', function(req, res){
 
     req.session.user = 'admin';
     req.session.role = 'admin';
+    res.json({ notice: 'Successfully Logged In'})
   } else {
     var officers = ['president', 'vp', 'tresurer', 'secretary'];
     var username = req.body.username.toLowerCase();

@@ -1,10 +1,18 @@
 Polymer({
-  showLogin: function(e) {
-    e.preventDefault();
+  isHidden: true,
+  toggleLogin: function(event) {
+    event.preventDefault();
     this.$.login.toggle();
   },
-  go: function(e) {
-    e.preventDefault();
-    this.router.go(e.currentTarget.attributes.href.value);
+  go: function(event) {
+    event.preventDefault();
+    this.router.go(event.currentTarget.attributes.href.value);
+  },
+  handleSubmit: function(event) {
+    this.fire('login', { username: event.detail.username, password: event.detail.password });
+  },
+  logout: function(event) {
+    event.preventDefault();
+    this.fire('logout', {});
   }
 });
