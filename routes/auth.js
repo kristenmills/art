@@ -42,6 +42,11 @@ router.get('/loggedIn', function(req, res) {
   } else {
     res.json({ loggedIn: false })
   }
+});
+
+router.post('/logout', function(req, res) {
+  req.session.destroy();
+  res.json({notice: "Successfully Logged Out"});
 })
 
 module.exports = router;
