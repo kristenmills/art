@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="auth-manager" attributes="loggedIn username password toast user">
+  <template>
+    <core-ajax
+      id="login"
+      contentType="application/json"
+      url="/api/auth"
+      body='{"username":"{{username}}", "password":"{{password}}"}'
+      handleAs="json"
+      method="POST"
+      on-core-response="{{ handleLogin }}">
+    </core-ajax>
+
+    <core-ajax
+      id="logout"
+      contentType="application/json"
+      url="/api/logout"
+      handleAs="json"
+      method="POST"
+      on-core-response="{{ handleLogout }}">
+    </core-ajax>
+
+    <core-ajax
+      auto
+      id="loggedIn"
+      url="/api/loggedIn"
+      handleAs="json"
+      on-core-response="{{ handleLoggedIn }}">
+    </core-ajax>
+  </template>
+
+  <script src="auth-manager.js"></script>
+</polymer-element>

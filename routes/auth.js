@@ -8,6 +8,7 @@ router.post('/auth', function(req, res){
     req.body.password === 'admin' ) {
 
     req.session.user = 'admin';
+    req.session.role = 'admin';
   } else {
     var officers = ['president', 'vp', 'tresurer', 'secretary'];
     var username = req.body.username.toLowerCase();
@@ -30,6 +31,7 @@ router.post('/auth', function(req, res){
           res.status(401).json({ notice: 'Insufficient Privleges'});
         }
         req.session.user = username;
+        req.session.role = 'admin';
         res.json({ notice: 'Successfully Logged In'})
       }
     );
@@ -38,7 +40,7 @@ router.post('/auth', function(req, res){
 
 router.get('/loggedIn', function(req, res) {
   if(req.session.user) {
-    res.json({ loggedIn: true, user: req.session.user });
+    res.json({ loggedIn: true, user: req.session.user, role: req.session.role });
   } else {
     res.json({ loggedIn: false })
   }
