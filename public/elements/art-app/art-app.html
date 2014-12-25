@@ -1,15 +1,11 @@
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
-<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../art-toolbar/art-toolbar.html">
 
 <polymer-element name="art-app">
   <template>
     <link rel="stylesheet"  href="art-app.css" shim-shadowdom>
     <core-header-panel mode="waterfall">
-      <core-toolbar>
-        <span flex><h2>Art</h2></span>
-        <span>Upload Art</span>
-        <span>Login</span>
-      </core-toolbar>
+      <art-toolbar></art-toolbar>
       <div class="content">
         <content></content>
       </div>
