@@ -4,10 +4,17 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressSession = require('express-session');
 
 var home = require('./routes/index');
 
 var app = express();
+var secret;
+if(app.get('env') === 'development' || app.get('env') === 'test') {
+  secret = 'somearbitrarysecret';
+} else {
+  secret = process.env.ART_SECRET;
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,8 +25,12 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
+app.use(expressSession({
+  secret:  secret,
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 app.use('/', home);
 
