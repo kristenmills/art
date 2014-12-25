@@ -2,6 +2,7 @@ Polymer({
   isHidden: true,
   toggleLogin: function(event) {
     event.preventDefault();
+
     this.$.login.toggle();
   },
   go: function(event) {

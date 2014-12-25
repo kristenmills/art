@@ -10,11 +10,11 @@
       <span>Upload Art</span>
       <template if="{{ !loggedIn }}">
         <span><a href="#" on-click="{{ toggleLogin }}">Login</a></span>
-        <login-dialog id="login" on-submit="{{ handleSubmit }}"></login-dialog>
       </template>
       <template if="{{ loggedIn }}">
         <span><a href="#" on-click="{{ logout }}">Logout</a></span>
       </template>
+      <login-dialog id="login" on-submit="{{ handleSubmit }}"></login-dialog>
     </core-toolbar>
   </template>
   <script src="art-toolbar.js"></script>

@@ -3,7 +3,7 @@ var router = express.Router();
 var ldap = require('ldapjs');
 
 router.post('/auth', function(req, res){
-  if(process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test' &&
+  if((process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') &&
     req.body.username === 'admin' &&
     req.body.password === 'admin' ) {
 
