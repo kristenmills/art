@@ -10,23 +10,24 @@ router.post('/auth', function(req, res){
     req.session.user = 'admin';
   } else {
     var officers = ['president', 'vp', 'tresurer', 'secretary'];
-    if(officers.indexOf(req.body.username) === -1) {
-      res.json({ notice: 'Insufficient Privleges'});
-    }
-    var username = req.body.username.toLowerCase() + '@ad.sofse.org';
+    var username = req.body.username.toLowerCase();
+    var user = username + '@ad.sofse.org';
     var password = req.body.password;
+
+    if(officers.indexOf(username) === -1) {
+      res.status(401).json({ notice: 'Insufficient Privleges'});
+    }
 
     var client = ldap.createClient({
       url: 'ldap://dc1.ad.sofse.org:389',
     });
 
-
     client.bind(
-      username,
+      user,
       password,
       function(err){
         if(err) {
-          res.json({ notice: 'Insufficient Privleges'});
+          res.status(401).json({ notice: 'Insufficient Privleges'});
         }
         req.session.user = username;
         res.json({ notice: 'Successfully Logged In'})
@@ -34,5 +35,13 @@ router.post('/auth', function(req, res){
     );
   }
 });
+
+router.get('/loggedIn', function(req, res) {
+  if(req.session.user) {
+    res.json({ loggedIn: true, user: req.session.user });
+  } else {
+    res.json({ loggedIn: false })
+  }
+})
 
 module.exports = router;
