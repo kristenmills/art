@@ -4,7 +4,6 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var browserify = require('browserify-middleware');
 
 var home = require('./routes/index');
 var auth = require('./routes/auth');
@@ -21,7 +20,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.get('/js/art.js', browserify('./public/javascripts/art.js'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
