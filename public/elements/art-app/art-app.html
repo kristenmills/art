@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../../bower_components/app-router/app-router.html">
 <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="../auth-manager/auth-manager.html">
 <link rel="import" href="../art-toolbar/art-toolbar.html">
 
@@ -9,13 +10,14 @@
   <template>
     <link rel="stylesheet"  href="art-app.css" shim-shadowdom>
     <link rel="stylesheet"  href="../../stylesheets/application.css" shim-shadowdom>
-    <auth-manager id="auth"></auth-manager>
+    <auth-manager id="auth" on-show-toast="{{ showToast }}"></auth-manager>
     <core-header-panel mode="waterfall">
       <art-toolbar loggedIn="{{$.auth.loggedIn}}" on-route-change="{{ handleRoute }}" on-login="{{ handleLogin}}" on-logout="{{handleLogout}}"></art-toolbar>
       <div class="content">
         <app-router id="router" mode="pushstate">
           <app-route path="/" import="/elements/art-home/art-home.html"></app-route>
         </app-router>
+        <paper-toast id="toast" text="{{toastMessage}}">
       </div>
     </core-header-panel>
   </template>

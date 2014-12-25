@@ -9,7 +9,8 @@
       body='{"username":"{{username}}", "password":"{{password}}"}'
       handleAs="json"
       method="POST"
-      on-core-response="{{ handleLogin }}">
+      on-core-response="{{ handleLogin }}"
+      on-core-error="{{ handleErrorLogin }}">
     </core-ajax>
 
     <core-ajax

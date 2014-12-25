@@ -9,5 +9,9 @@ Polymer({
   },
   handleRoute: function(event) {
     this.$.router.go(event.detail.href);
+  },
+  showToast: function(event) {
+    this.toastMessage = event.detail.toastMessage;
+    this.$.toast.show();
   }
 });
