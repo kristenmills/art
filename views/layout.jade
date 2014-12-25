@@ -1,7 +1,10 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    title Art
+    base(href='/')
+    link(rel='stylesheet', href='/stylesheets/application.css')
+    script(src='/bower_components/webcomponentsjs/webcomponents.js')
+    link(rel="import" href="/elements/art-app/art-app.html")
+  body(fullbleed unresolved)
     block content
