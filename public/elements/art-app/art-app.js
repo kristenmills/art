@@ -6,5 +6,8 @@ Polymer({
   },
   handleLogout: function(event) {
     this.$.auth.logout();
+  },
+  handleRoute: function(event) {
+    this.$.router.go(event.detail.href);
   }
 });
