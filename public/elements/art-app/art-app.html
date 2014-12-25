@@ -1,7 +1,6 @@
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../../bower_components/app-router/app-router.html">
 <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
-<link rel="import" href="../login-dialog/login-dialog.html">
 
 <polymer-element name="art-app">
   <template>
@@ -13,11 +12,10 @@
         <span>Upload Art</span>
         <span><a href="#" on-click="{{ showLogin }}">Login</a></span>
       </core-toolbar>
-      <login-dialog id="login"></login-dialog>
+
       <div class="content">
         <app-router id="router" mode="pushstate">
           <app-route path="/" import="/elements/art-home/art-home.html"></app-route>
-          <app-route path="/asd" import="/elements/art-toolbar/art-toolbar.html"></app-route>
         </app-router>
       </div>
     </core-header-panel>
