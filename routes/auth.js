@@ -28,7 +28,7 @@ router.post('/auth', function(req, res){
       user,
       password,
       function(err){
-        if(err) {
+        if(err || password.length === 0) {
           res.status(401).json({ notice: 'Insufficient Privleges'});
         }
         req.session.user = username;

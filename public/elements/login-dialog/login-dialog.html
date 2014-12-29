@@ -8,11 +8,11 @@
     <link rel="stylesheet"  href="../../stylesheets/application.css" shim-shadowdom>
     <paper-action-dialog id="login" heading="Log In">
       <paper-input-decorator floatingLabel label="Username" style="width: 350px;">
-        <input type="text" is="core-input" value="{{ username }}">
+        <input type="text" is="core-input" value="{{ username }}" on-keypress="{{ keypressHandler }}">
       </paper-input-decorator>
       <br>
       <paper-input-decorator floatingLabel label="Password" style="width: 350px;" type="password">
-        <input type="password" is="core-input" value="{{ password }}">
+        <input type="password" is="core-input" value="{{ password }}" on-keypress="{{ keypressHandler }}">
       </paper-input-decorator>
       <br>
       <paper-button dismissive>Cancel</paper-button>
