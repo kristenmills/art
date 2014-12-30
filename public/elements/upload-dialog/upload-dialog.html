@@ -7,7 +7,7 @@
 
 <polymer-element name="upload-dialog">
   <template>
-    <link rel="stylesheet" href="/stylesheets/application.css" shim-shadowdom>
+    <link rel="stylesheet" href="../../stylesheets/application.css" shim-shadowdom>
     <paper-action-dialog id="upload" heading="Upload art">
       <form is="ajax-form" action="/api/art" method="post" id="uploadForm">
         <paper-input-decorator floatingLabel label="Title" style="width: 350px;">
@@ -16,11 +16,12 @@
         <paper-input-decorator floatingLabel label="Author (optional)" style="width: 350px;">
           <input type="text" is="core-input" name="author" on-keypress="{{ keypressHandler }}">
         </paper-input-decorator>
-        <file-input id="file" required extensions='[".jpg", ".jpeg", ".gif", ".png", ".bmp"]' maxFiles="1">
+        <file-input id="file" required extensions='["jpg", "jpeg", "gif", "png", "bmp"]' maxFiles="1" on-change="{{ displayFile }}">
           <paper-button raised style="display: block; margin: 0 auto; width: 150px;" on-click="{{ triggerFileUpload }}">
             <core-icon icon="file-upload"></core-icon> Select File
           </paper-button>
         </file-input>
+        <p id="fileName" style="text-align: center;"></p>
         <br>
       </form>
       <paper-button dismissive>Cancel</paper-button>

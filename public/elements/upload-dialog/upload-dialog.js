@@ -7,5 +7,8 @@ Polymer({
   },
   submit: function() {
     this.$.uploadForm.submit();
+  },
+  displayFile: function() {
+    this.$.fileName.innerHTML = this.$.file.files[0].name;
   }
 });
