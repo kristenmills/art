@@ -16,6 +16,7 @@
       <div class="content">
         <app-router id="router" mode="pushstate">
           <app-route path="/" import="/elements/art-home/art-home.html"></app-route>
+          <app-route path="*" import="/elements/art-error/art-error.html"></app-route>
         </app-router>
         <paper-toast id="toast" text="{{toastMessage}}">
       </div>
