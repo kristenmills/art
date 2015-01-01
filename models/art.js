@@ -5,12 +5,13 @@ var _ = require('lodash')
 var artSchema = new Schema({
   title: {type: String, required: true},
   author: String,
+  fileName: String,
   createdAt: {type: Date, default: Date.now},
   votes: {
-    president: Number,
-    vp: Number,
-    treasurer: Number,
-    secretary: Number
+    president: {type: Number, default: 0},
+    vp: {type: Number, default: 0},
+    treasurer: {type: Number, default: 0},
+    secretary: {type: Number, default: 0}
   }
 });
 

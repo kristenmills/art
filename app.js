@@ -5,9 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var busboy = require('connect-busboy');
+var mongoose = require('mongoose');
 
 var home = require('./routes/index');
 var auth = require('./routes/auth');
+var art = require('./routes/art');
 
 var app = express();
 var secret;
@@ -17,6 +20,8 @@ if(app.get('env') === 'development' || app.get('env') === 'test') {
   secret = process.env.ART_SECRET;
 }
 
+mongoose.connect('mongodb://localhost/art-' + app.get('env'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -25,6 +30,7 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(busboy());
 app.use(cookieParser());
 app.use(session({
   secret:  secret,
@@ -32,8 +38,10 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/api', auth);
+app.use('/api/art', art);
 app.use('/', home);
 
 /// catch 404 and forwarding to error handler
