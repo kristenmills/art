@@ -16,7 +16,7 @@
         <span><a href="#" on-click="{{ logout }}">Logout</a></span>
       </template>
       <login-dialog id="login" on-submit="{{ handleSubmit }}"></login-dialog>
-      <upload-dialog id="upload"></upload-dialog>
+      <upload-dialog id="upload" on-submit="{{ handleUpload }}"></upload-dialog>
     </core-toolbar>
   </template>
   <script src="art-toolbar.js"></script>

@@ -18,5 +18,8 @@ Polymer({
   logout: function(event) {
     event.preventDefault();
     this.fire('logout', {});
+  },
+  handleUpload: function(event) {
+    this.fire('show-toast', event.detail );
   }
 });

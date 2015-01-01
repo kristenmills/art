@@ -10,5 +10,16 @@ Polymer({
   },
   displayFile: function() {
     this.$.fileName.innerHTML = this.$.file.files[0].name;
+  },
+  submitted: function(event) {
+    if (event.detail.status > 299) {
+      this.fire('submit', {toastMessage: "Couldn't upload art."});
+    } else {
+      this.fire('submit', {toastMessage: 'Successfully uploaded art for judging'});
+      // TODO: Reset the form
+    }
+  },
+  invalid: function(event) {
+    this.fire('submit', {toastMessage: "Couldn't upload art."});
   }
 });

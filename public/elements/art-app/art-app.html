@@ -12,7 +12,8 @@
     <link rel="stylesheet"  href="../../stylesheets/application.css" shim-shadowdom>
     <auth-manager id="auth" on-show-toast="{{ showToast }}"></auth-manager>
     <core-header-panel mode="waterfall">
-      <art-toolbar loggedIn="{{$.auth.loggedIn}}" on-route-change="{{ handleRoute }}" on-login="{{ handleLogin}}" on-logout="{{handleLogout}}"></art-toolbar>
+      <art-toolbar loggedIn="{{$.auth.loggedIn}}" on-route-change="{{ handleRoute }}"
+        on-login="{{ handleLogin}}" on-logout="{{handleLogout}}" on-show-toast="{{ showToast }}"></art-toolbar>
       <div class="content">
         <app-router id="router" mode="pushstate">
           <app-route path="/" import="/elements/art-home/art-home.html"></app-route>

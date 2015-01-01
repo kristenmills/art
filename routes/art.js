@@ -13,7 +13,6 @@ router.post('/', function(req, res) {
   var params = {};
 
   req.busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
-    console.log("Uploading:", filename);
     mkdirp.sync(__dirname + '/../uploads/' + moment().day(5).format('YYYYMMDD'));
     params.fileName = uuid.v4() + '.' + filename.split('.').pop();
     fstream = fs.createWriteStream(__dirname + '/../uploads/' + moment().day(5).format('YYYYMMDD') + '/' + params.fileName);
@@ -28,6 +27,8 @@ router.post('/', function(req, res) {
     Art.create(params, function(err, art){
       if(!err) {
         res.json({ notice: 'Successfully uploaded file'});
+      } else {
+        res.status(422).json({ message: 'Invalid upload' });
       }
     });
   });
