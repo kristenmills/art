@@ -4,6 +4,10 @@ Polymer({
     event.preventDefault();
     this.$.login.toggle();
   },
+  toggleUpload: function(event) {
+    event.preventDefault();
+    this.$.upload.toggle();
+  },
   go: function(event) {
     event.preventDefault();
     this.fire('route-change', { href: event.currentTarget.attributes.href.value });
@@ -14,5 +18,8 @@ Polymer({
   logout: function(event) {
     event.preventDefault();
     this.fire('logout', {});
+  },
+  handleUpload: function(event) {
+    this.fire('show-toast', event.detail );
   }
 });
